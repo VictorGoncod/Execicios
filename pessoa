@@ -1,0 +1,43 @@
+package pessoa;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener.*;
+public class Janela extends Pessoa implements ActionListener {
+    
+  private JFrame j = new JFrame();
+  private JMenuBar jmbBarra = new JMenuBar();
+	
+  private JMenu jmArquivo = new JMenu("Arquivo");
+  private JMenuItem jmiItem1 = new JMenuItem("Salvar");
+  private JMenuItem jmiItem2 = new JMenuItem("Limpar");
+   
+  public Janela(){
+
+   j.setTitle("Meu Programa");
+   j.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+   j.setSize(500,400);
+   j.setLocationRelativeTo(null);
+   j.setLayout(null);
+   j.setJMenuBar(jmbBarra);
+
+     jmbBarra.add(jmArquivo);
+     jmArquivo.add(jmiItem1);
+     jmArquivo.add(jmiItem2);
+     jmiItem1.addActionListener(this);
+     jmiItem2.addActionListener(this);
+   
+     j.setVisible(true);    
+    }
+   
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == jmiItem1){
+			JOptionPane.showMessageDialog(null,"Seus dados foram salvos no item 1!", "Atenção",JOptionPane.PLAIN_MESSAGE);
+		}
+
+	if (e.getSource() == jmiItem2){
+			JOptionPane.showMessageDialog(null,"Seus dados foram excluídos no item 2", "Atenção",JOptionPane.PLAIN_MESSAGE);		        
+		}
+    }
+         
+}

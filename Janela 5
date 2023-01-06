@@ -1,0 +1,71 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Janela5 extends JFrame implements ActionListener{
+
+	private JLabel jlEscolha = new JLabel();
+	private JTextField jtfEscolha = new JTextField();
+	private JButton jbVerifica = new JButton();
+	
+	private JRadioButton s = new JRadioButton("Sim");
+	private JRadioButton n = new JRadioButton("Não", true);
+	private JRadioButton t = new JRadioButton("Talvez");
+
+	private ButtonGroup bgrupo = new ButtonGroup();
+
+	public Janela5(){
+		this.setTitle("Teste de Janela");
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+		this.setSize(300,250);
+		this.setLocationRelativeTo(null);
+		this.setLayout(null);
+
+		s.setBounds(20,20,100,20);
+		n.setBounds(20,40,100,20);
+		t.setBounds(20,60,100,20);
+
+		this.add(s);
+		this.add(n);
+		this.add(t);
+		
+		bgrupo.add(s);
+		bgrupo.add(n);
+		bgrupo.add(t);
+
+
+		jbVerifica.setText("Verifica");
+		jbVerifica.setBounds(20,100,150,20);
+		jbVerifica.addActionListener(this);
+		jbVerifica.setMnemonic(KeyEvent.VK_V);
+		this.add(jbVerifica);
+
+		jlEscolha.setText("Escolha:");
+		jlEscolha.setBounds(20,130,150,20);
+		this.add(jlEscolha);
+
+		jtfEscolha.setBounds(20,150,150,20);
+		this.add(jtfEscolha);
+		
+		this.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent event){
+	
+		if (event.getSource() == jbVerifica){
+			
+			if (s.isSelected()){
+				jtfEscolha.setText("escolheu sim");
+			}
+
+			if (n.isSelected()){
+				jtfEscolha.setText("escolheu nÃ£o");
+			}
+
+			if (t.isSelected()){
+				jtfEscolha.setText("escolheu talvez");
+			}
+
+		}
+	}
+}
